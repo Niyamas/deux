@@ -149,6 +149,24 @@ function closeMenu() {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Compact booking CTA on mobile so it doesn't stretch the nav bar */
+@media (max-width: 767px) {
+  .nav-actions .btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    white-space: normal;
+    text-align: center;
+    max-width: 7.5rem;
+  }
+
+  .nav-actions .btn:hover {
+    transform: none;
+  }
 }
 
 .hamburger {
