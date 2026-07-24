@@ -1,55 +1,52 @@
-/* color palette from <https://github.com/vuejs/theme> */
+/* 
+  Deux — Upscale Hair Salon
+  Color System: Warm, tranquil, refined luxury
+  - Creamy warm neutrals for calm & invitation
+  - Deep espresso browns for sophisticated grounding (upscale)
+  - Muted warm gold for striking yet warm accents
+  Rationale: Earthy warm neutrals + one metallic gold create timeless, cozy, 
+  high-end feel per luxury salon & neutral trend research.
+*/
+
+/* Deux Color Palette (CSS custom properties) */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  /* Core backgrounds - warm tranquil creams */
+  --deux-cream: #FAF7F2;
+  --deux-beige: #F0E9DF;
+  --deux-taupe: #E6DDD3;
+  --deux-surface: #F5F1EB;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  /* Text & depth - rich warm darks */
+  --deux-deep: #2C2522;
+  --deux-brown: #5F5349;
+  --deux-brown-light: #7A6B5F;
 
-  --vt-c-indigo: #2c3e50;
+  /* Signature accent - warm gold for upscale striking warmth */
+  --deux-gold: #B89778;
+  --deux-gold-light: #D4C3A8;
+  --deux-gold-dark: #8B6F57;
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  /* Supporting */
+  --deux-border: #D4C9BB;
+  --deux-border-strong: #C1B3A3;
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  /* On-dark / overlays */
+  --deux-dark: #25201C;
+  --deux-dark-soft: #312B26;
+  --deux-cream-on-dark: #F5F0E8;
+
+  /* Legacy semantic aliases (for gradual migration) */
+  --color-background: var(--deux-cream);
+  --color-background-soft: var(--deux-beige);
+  --color-background-mute: var(--deux-taupe);
+  --color-border: var(--deux-border);
+  --color-border-hover: var(--deux-border-strong);
+  --color-heading: var(--deux-deep);
+  --color-text: var(--deux-deep);
+  --section-gap: 120px;
 }
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
-
+/* Reset & Base */
 *,
 *::before,
 *::after {
@@ -58,16 +55,17 @@
   font-weight: normal;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
-  line-height: 1.6;
+  color: var(--deux-deep);
+  background: var(--deux-cream);
+  line-height: 1.7;
   font-family:
-    Inter,
+    'Inter',
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -80,7 +78,176 @@ body {
     'Helvetica Neue',
     sans-serif;
   font-size: 15px;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Elegant typography for upscale feel */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 3.25rem; letter-spacing: -0.025em; }
+h2 { font-size: 2.25rem; letter-spacing: -0.015em; }
+h3 { font-size: 1.5rem; }
+
+p {
+  font-size: 1rem;
+  color: var(--deux-brown);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Refined button styles using the gold accent */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  border-radius: 0;
+  border: 1px solid var(--deux-gold);
+  background: transparent;
+  color: var(--deux-deep);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: var(--deux-gold);
+  color: var(--deux-cream);
+  border-color: var(--deux-gold);
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background: var(--deux-gold);
+  color: var(--deux-cream);
+  border-color: var(--deux-gold);
+}
+
+.btn--primary:hover {
+  background: var(--deux-gold-dark);
+  border-color: var(--deux-gold-dark);
+  color: var(--deux-cream);
+}
+
+.btn--dark {
+  border-color: var(--deux-cream-on-dark);
+  color: var(--deux-cream-on-dark);
+}
+
+.btn--dark:hover {
+  background: var(--deux-cream-on-dark);
+  color: var(--deux-deep);
+  border-color: var(--deux-cream-on-dark);
+}
+
+/* Subtle image treatments for warm modern aesthetic */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.img-hover-zoom:hover .img-cover,
+section:hover .img-cover {
+  transform: scale(1.035);
+}
+
+/* Elegant section spacing */
+.section {
+  padding: 5rem 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 6.5rem 0;
+  }
+  h1 { font-size: 4rem; }
+  h2 { font-size: 2.75rem; }
+}
+
+/* Common layout + section header helpers (used by many sections) */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container-narrow {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-header.center {
+  text-align: center;
+}
+
+.eyebrow {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--deux-gold);
+  margin-bottom: 0.65rem;
+}
+
+/* ============================================
+   Scroll reveal animations (used by all sections)
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Special hero entrance animation (plays on load) */
+.hero .reveal {
+  animation: heroEnter 1.1s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
